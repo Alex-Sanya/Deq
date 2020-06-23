@@ -8,9 +8,11 @@
 
 #define ESC 27
 
-int main()
+int main()//спросить у пользователя длинну
 {
 	s_deq deq;
+	positive_int(&deq.size);
+	printf("%d", deq.size);
 	deq_null(&deq);
 	demonstration(&deq);
 	printf("\n\n");

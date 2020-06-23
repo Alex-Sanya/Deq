@@ -9,13 +9,17 @@
 #define deq_IS_EMPTY 1
 #define deq_IS_FULL 2
 #define INCORRECT_VALUE 3
+#define NOT_POSITIVE 4
 #define ESC 27
 
 // пишет сообщение по коду ошибки. всегда возвращает 0
 int err(int);
 
 // корректный ввод целого числа
-int input_int(int* n);
+int input_int(int* x);
+
+// ввод положительного числа
+int positive_int(int *x);
 
 // вывести команды
 void print_comands();

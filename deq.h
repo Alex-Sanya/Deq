@@ -16,6 +16,9 @@ typedef struct _s_deq
 
 #include "utl.h"
 
+// задание размера массива пользователем
+void deq_set_size(s_deq* deq);
+
 // задание изначальных параметров
 void deq_null(s_deq* deq);
 

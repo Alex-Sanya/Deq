@@ -10,6 +10,9 @@ int err(int type)
 	case INCORRECT_VALUE:
 		printf("\nIncorrect value!\n");
 		break;
+	case NOT_POSITIVE:
+		printf("\nNot positive!\n");
+		break;
 	case deq_IS_EMPTY:
 		printf("\ndeq is empty.\n");
 		break;
@@ -26,18 +29,38 @@ int err(int type)
 	return 0;
 }
 
-// проверка на целочисоенность ввода
-int input_int(int* n)
+// ввод целого числа
+int input_int(int* x)
 {
-	int check = 0;
+	int check;
+	while (1)
+	{
+		check = scanf("%d", x);
+		if (check < 1)
+		{
+			while (getchar() != '\n');
+			err(INCORRECT_VALUE);
+			continue;
+		}
+		return *x;
+	}
+	/*int check = 0;
 	while (!check)
 	{
-		check = scanf("%d", n);
+		check = scanf("%d", x);
 		if (!check)
-			printf("\nIncorrect input. Try again: ");
+			err(INCORRECT_VALUE);
 		fflush(stdin);
 	}
-	return *n;
+	return *x;*/
+}
+
+// ввод положительного числа
+int positive_int(int *x)
+{
+	while (input_int(x) <= 0)
+		err(NOT_POSITIVE);
+	return *x;
 }
 
 // вывести команды
