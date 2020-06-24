@@ -5,11 +5,12 @@
 #include "deq.h"
 #include <conio.h>
 
-#define deq_OVERFLOW -1
+#define deq_overlow -1
 #define deq_IS_EMPTY 1
 #define deq_IS_FULL 2
 #define INCORRECT_VALUE 3
 #define NOT_POSITIVE 4
+#define MORE_THAN_MAXIMUM 5
 #define ESC 27
 
 // пишет сообщение по коду ошибки. всегда возвращает 0

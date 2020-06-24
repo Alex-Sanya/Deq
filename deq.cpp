@@ -1,10 +1,19 @@
 #include "deq.h"
+#include "utl.h"
 #include <stdio.h>
+
+// задание размера массива пользователем
+void deq_set_size(s_deq* deq)
+{
+	do
+	{
+		printf("\nEnter deq size less than 10,000: ");
+	} while (positive_int(&(deq->size)) > 10000);
+}
 
 // задание изначальных параметров
 void deq_null(s_deq* deq)
 {
-	deq->size = deq_SIZE;
 	for (int i = 0; i < deq->size; i++)
 		deq->arr[i] = 0;
 	deq->count = deq->begin = deq->end = 0;
@@ -12,10 +21,10 @@ void deq_null(s_deq* deq)
 
 // очистка значений дека
 void deq_clear(s_deq* deq)
-{
-	deq->size = deq_SIZE; 
-	for (int i = 0; i < deq->size; i++)
-		deq->arr[i] = 0;
+{ 
+	//for (int i = 0; i < deq->size; i++)
+	//	deq->arr[i] = 0;
+	deq->size = 0;
 	deq->count = deq->begin = deq->end = 0;
 }
 
@@ -39,7 +48,7 @@ int deq_is_full(s_deq* deq)
 int deq_push_back(s_deq* deq, int n)
 {
 	if (deq->count >= deq->size) 
-		return err(deq_OVERFLOW);
+		return err(deq_overlow);
 	if (!deq_is_empty(deq))
 		deq->end = (deq->end + 1) % deq->size;
 	deq->count++;
@@ -51,7 +60,7 @@ int deq_push_back(s_deq* deq, int n)
 int deq_push_front(s_deq* deq, int n)
 {
 	if (deq->count >= deq->size)
-		return err(deq_OVERFLOW);
+		return err(deq_overlow);
 	if (!deq_is_empty(deq))
 		deq->begin = (deq->begin + deq->size - 1) % deq->size;
 	deq->count++;
@@ -92,6 +101,8 @@ void deq_print_from_begin(s_deq* deq, int new_line)
 		if (i == deq->end)
 			break;
 	}
+	if (deq_is_empty(deq))
+		printf("deq is empty");
 	return;
 }
 
@@ -106,5 +117,7 @@ void deq_print_from_end(s_deq* deq, int new_line)
 		if (i == deq->begin)
 			break;
 	}
+	if (deq_is_empty(deq))
+		printf("deq is empty");
 	return;
 }

@@ -2,7 +2,7 @@
 #define _deq_H
 #define _CRT_SECURE_NO_WARNINGS
 
-#define deq_SIZE 8
+#define deq_SIZE 10000
 
 // структура дека
 typedef struct _s_deq

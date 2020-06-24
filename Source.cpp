@@ -8,14 +8,10 @@
 
 #define ESC 27
 
-int main()//спросить у пользователя длинну
+void main()
 {
-	s_deq deq;
-	positive_int(&deq.size);
-	printf("%d", deq.size);
-	deq_null(&deq);
+	s_deq deq = { {0,},0,0,0,0};
 	demonstration(&deq);
 	printf("\n\n");
 	system("pause");
-	return 0;
 }

@@ -8,24 +8,26 @@ int err(int type)
 	switch (type)
 	{
 	case INCORRECT_VALUE:
-		printf("\nIncorrect value!\n");
+		printf("Incorrect value!\n");
+		break;
+	case MORE_THAN_MAXIMUM:
+		printf("More than Maximum!\n");
 		break;
 	case NOT_POSITIVE:
-		printf("\nNot positive!\n");
+		printf("Not positive!\n");
 		break;
 	case deq_IS_EMPTY:
-		printf("\ndeq is empty.\n");
+		printf("deq is empty.\n");
 		break;
 	case deq_IS_FULL:
-		printf("\ndeq is full.\n");
+		printf("deq is full.\n");
 		break;
-	case deq_OVERFLOW:
-		printf("\ndeq overflow.\n");
+	case deq_overlow:
+		printf("deq overlow.\n");
 		break;
 	default:
 		break;
 	};
-	system("pause");
 	return 0;
 }
 
@@ -75,6 +77,7 @@ void print_comands()
 	printf("delete in end------5\n");
 	printf("print from begin---6\n");
 	printf("print from end-----7\n");
+	printf("set size of deq----8\n");
 }
 
 // команды
@@ -113,6 +116,10 @@ int comands(char comand, s_deq* deq)
 		printf("\ndeq from end: ");
 		deq_print_from_end(deq, 1);
 		break;
+	case 8:
+		deq_clear(deq);
+		deq_set_size(deq);
+		break;
 	default:
 		break;
 	};
@@ -128,8 +135,8 @@ void demonstration(s_deq* deq)
 	{
 		system("cls");
 		print_comands();
-		if (!deq_is_empty(deq))
-			deq_print_from_begin(deq, 1);
+		printf("\ndeq size=%d\n", deq->size);
+		deq_print_from_begin(deq, 1);
 		printf("\ncomand: %c", comand);
 		if (!comands(comand, deq))
 			break;
